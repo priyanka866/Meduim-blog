@@ -1,10 +1,16 @@
 from flask import Flask, request, jsonify
+import flask
 
 app = Flask(__name__)
 
 def count_words(text):
     words = text.split()
     return len(words)
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    # Check if the classifier was loaded correctly
+    return flask.Response(response= 'Healthy container of NBA and Persona')
 
 @app.route('/count_words', methods=['POST'])
 def count_words_endpoint():
